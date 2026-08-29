@@ -172,11 +172,6 @@ I reviewed the command output and confirmed that Client-1’s DNS server was set
 - Verifying network settings with `ipconfig /all`
 - Preparing the infrastructure for an Active Directory domain
 
-## Cost Management
-
-The virtual machines were retained for upcoming Active Directory labs. When they were not being used, I stopped them through the Azure portal to reduce compute charges.
-
-> In Azure, verify that a virtual machine displays **Stopped (deallocated)** when you want compute billing to stop. Other attached resources, such as storage disks, may continue to generate small charges.
 
 ## Conclusion
 
