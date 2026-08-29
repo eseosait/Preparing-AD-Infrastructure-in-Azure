@@ -135,7 +135,8 @@ ping <DC-1-private-IP-address>
 
 The successful replies confirmed that Client-1 could communicate with DC-1 across the Azure virtual network.
 
-![Successful Ping Test](https://github.com/user-attachments/assets/ADD-YOUR-IMAGE-LINK-HERE)
+![Successful Ping Test] <img width="3024" height="1964" alt="image" src="https://github.com/user-attachments/assets/96060bab-b4fb-4adc-abc8-a57cfc000446" />
+
 
 ## Part 9: Verify the DNS Configuration
 
