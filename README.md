@@ -1,54 +1,184 @@
-<p align="center">
-<img src="https://i.imgur.com/Clzj7Xs.png" alt="osTicket logo"/>
-</p>
+# Active Directory: Preparing AD Infrastructure in Azure
 
-<h1>osTicket - Ticket Lifecycle: Intake Through Resolution</h1>
-This tutorial outlines the lifecycle of a ticket from intake to resolution within the open-source help desk ticketing system osTicket.<br />
+## Project Overview
 
+In this lab, I prepared the cloud infrastructure required for an Active Directory environment in Microsoft Azure.
 
-<h2>Video Demonstration</h2>
+I created a Windows Server 2022 virtual machine named **DC-1** and a Windows 10 virtual machine named **Client-1**. I connected both systems to the same Azure virtual network, assigned DC-1 a static private IP address, and configured Client-1 to use DC-1 as its DNS server.
 
-- ### [YouTube: How to create, work, and resolves tickets within osTicket](https://www.youtube.com)
+I then used PowerShell to test connectivity between the two virtual machines and verify Client-1’s DNS configuration.
 
-<h2>Environments and Technologies Used</h2>
+This infrastructure prepares the environment for installing Active Directory Domain Services, promoting DC-1 to a domain controller, creating an Active Directory domain, and joining Client-1 to the domain.
 
-- Microsoft Azure (Virtual Machines/Compute)
-- Remote Desktop
-- Internet Information Services (IIS)
+## Environments and Technologies Used
 
-<h2>Operating Systems Used </h2>
+- Microsoft Azure
+- Azure Resource Groups
+- Azure Virtual Networks and Subnets
+- Azure Virtual Machines
+- Windows Server 2022
+- Windows 10
+- Remote Desktop Protocol (RDP)
+- PowerShell
+- Domain Name System (DNS)
+- Internet Control Message Protocol (ICMP)
 
-- Windows 10</b> (21H2)
+## AD Infrastructure Overview
 
-<h2>Ticket Lifecycle Stages</h2>
+| Virtual Machine | Operating System | Purpose | Network Configuration |
+|---|---|---|---|
+| DC-1 | Windows Server 2022 | Future Domain Controller | Static private IP address |
+| Client-1 | Windows 10 | Future Domain Client | DNS configured to use DC-1’s private IP address |
 
-- Intake
-- Assignment and Communication
-- Working the Issue
-- Resolution
+## Part 1: Create the Azure Resource Group
 
-<h2>Lifecycle Stages</h2>
+1. Signed in to the Microsoft Azure portal.
+2. Searched for **Resource groups**.
+3. Selected **Create**.
+4. Created a new resource group for the Active Directory lab.
+5. Placed both virtual machines and their networking resources inside the same resource group.
 
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
+![Azure Resource Group](https://github.com/user-attachments/assets/ADD-YOUR-IMAGE-LINK-HERE)
 
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
+## Part 2: Create the Virtual Network and Subnet
 
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
+1. Searched for **Virtual networks** in the Azure portal.
+2. Created a new virtual network.
+3. Created a subnet inside the virtual network.
+4. Confirmed that the virtual network was created in the same Azure region as the resource group.
+
+Both virtual machines were connected to the same network so they could communicate through their private IP addresses.
+
+![Virtual Network and Subnet](https://github.com/user-attachments/assets/ADD-YOUR-IMAGE-LINK-HERE)
+
+## Part 3: Create DC-1 in Azure
+
+I created a Windows Server virtual machine using the following configuration:
+
+| Setting | Configuration |
+|---|---|
+| Virtual machine name | DC-1 |
+| Operating system | Windows Server 2022 |
+| Administrator username | labuser |
+| Region | Same region as the virtual network |
+| Virtual network | Active Directory lab network |
+
+> For security, passwords and other sensitive credentials should never be added to a public GitHub repository.
+
+![DC-1 Virtual Machine](https://github.com/user-attachments/assets/ADD-YOUR-IMAGE-LINK-HERE)
+
+## Part 4: Configure a Static Private IP Address for DC-1
+
+DC-1 requires a consistent private IP address because Client-1 will use that address as its DNS server.
+
+1. Opened **DC-1** in the Azure portal.
+2. Opened **Networking** and selected the network interface.
+3. Selected **IP configurations**.
+4. Opened the primary IP configuration.
+5. Changed the private IP assignment from **Dynamic** to **Static**.
+6. Saved the configuration.
+
+![DC-1 Static Private IP](https://github.com/user-attachments/assets/ADD-YOUR-IMAGE-LINK-HERE)
+
+## Part 5: Connect to DC-1 and Configure the Firewall
+
+1. Located DC-1’s public IP address in the Azure portal.
+2. Connected to DC-1 using Remote Desktop Protocol.
+3. Signed in with the administrator account created during deployment.
+4. Temporarily disabled the Windows Defender Firewall profiles to test network connectivity.
+
+> Disabling the firewall was performed only in this controlled lab environment. In a production environment, the firewall should remain enabled and only the required firewall rules should be configured.
+
+![Windows Firewall Configuration](https://github.com/user-attachments/assets/ADD-YOUR-IMAGE-LINK-HERE)
+
+## Part 6: Create Client-1 in Azure
+
+I created a Windows client virtual machine using the following configuration:
+
+| Setting | Configuration |
+|---|---|
+| Virtual machine name | Client-1 |
+| Operating system | Windows 10 |
+| Administrator username | labuser |
+| Region | Same region as DC-1 |
+| Virtual network | Same virtual network as DC-1 |
+
+Placing Client-1 and DC-1 on the same virtual network allowed them to communicate privately inside Azure.
+
+![Client-1 Virtual Machine](https://github.com/user-attachments/assets/ADD-YOUR-IMAGE-LINK-HERE)
+
+## Part 7: Configure Client-1’s DNS Settings
+
+I configured Client-1 to use DC-1 as its DNS server.
+
+1. Opened **Client-1** in the Azure portal.
+2. Opened **Networking** and selected Client-1’s network interface.
+3. Opened **DNS servers**.
+4. Selected the **Custom** DNS option.
+5. Entered DC-1’s private IP address.
+6. Saved the DNS configuration.
+7. Restarted Client-1 through the Azure portal.
+
+This configuration prepares Client-1 to locate the Active Directory domain after Active Directory Domain Services is installed on DC-1.
+
+![Client-1 DNS Configuration](https://github.com/user-attachments/assets/ADD-YOUR-IMAGE-LINK-HERE)
+
+## Part 8: Test Network Connectivity
+
+After restarting Client-1, I connected to it through Remote Desktop and tested its connection to DC-1.
+
+I opened PowerShell and ran:
+
+```powershell
+ping <DC-1-private-IP-address>
+```
+
+The successful replies confirmed that Client-1 could communicate with DC-1 across the Azure virtual network.
+
+![Successful Ping Test](https://github.com/user-attachments/assets/ADD-YOUR-IMAGE-LINK-HERE)
+
+## Part 9: Verify the DNS Configuration
+
+From PowerShell on Client-1, I ran:
+
+```powershell
+ipconfig /all
+```
+
+I reviewed the command output and confirmed that Client-1’s DNS server was set to DC-1’s private IP address.
+
+![IPConfig DNS Verification](https://github.com/user-attachments/assets/ADD-YOUR-IMAGE-LINK-HERE)
+
+## Verification Summary
+
+| Test | Expected Result |
+|---|---|
+| DC-1 private IP assignment | Static |
+| DC-1 and Client-1 region | Same Azure region |
+| DC-1 and Client-1 network | Same virtual network |
+| Ping from Client-1 to DC-1 | Successful replies |
+| Client-1 DNS server | DC-1’s private IP address |
+
+## Skills Demonstrated
+
+- Creating and managing Microsoft Azure resources
+- Creating Windows Server and Windows client virtual machines
+- Configuring Azure virtual networks and subnets
+- Assigning a static private IP address
+- Configuring a custom DNS server
+- Connecting to virtual machines through Remote Desktop
+- Testing network connectivity with `ping`
+- Verifying network settings with `ipconfig /all`
+- Preparing the infrastructure for an Active Directory domain
+
+## Cost Management
+
+The virtual machines were retained for upcoming Active Directory labs. When they were not being used, I stopped them through the Azure portal to reduce compute charges.
+
+> In Azure, verify that a virtual machine displays **Stopped (deallocated)** when you want compute billing to stop. Other attached resources, such as storage disks, may continue to generate small charges.
+
+## Conclusion
+
+In this lab, I prepared the foundational infrastructure for an Active Directory environment in Microsoft Azure. I created DC-1 and Client-1, connected them to the same virtual network, configured DC-1 with a static private IP address, directed Client-1’s DNS traffic to DC-1, and verified connectivity between the two systems.
+
+The environment is now prepared for installing Active Directory Domain Services, promoting DC-1 to a domain controller, and joining Client-1 to the domain.
