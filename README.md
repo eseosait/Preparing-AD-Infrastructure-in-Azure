@@ -38,7 +38,7 @@ This infrastructure prepares the environment for installing Active Directory Dom
 4. Created a new resource group for the Active Directory lab.
 5. Placed both virtual machines and their networking resources inside the same resource group.
 
-![Azure Resource Group](https://github.com/user-attachments/assets/ADD-YOUR-IMAGE-LINK-HERE)
+![Azure Resource Group] <img width="3024" height="1964" alt="image" src="https://github.com/user-attachments/assets/0ca182a1-1ef3-487a-952c-9c31477ebc51" />
 
 ## Part 2: Create the Virtual Network and Subnet
 
@@ -49,7 +49,7 @@ This infrastructure prepares the environment for installing Active Directory Dom
 
 Both virtual machines were connected to the same network so they could communicate through their private IP addresses.
 
-![Virtual Network and Subnet](https://github.com/user-attachments/assets/ADD-YOUR-IMAGE-LINK-HERE)
+![Virtual Network and Subnet] <img width="3024" height="1811" alt="image" src="https://github.com/user-attachments/assets/72620f20-ca4c-4af0-bf4f-b40f2932ded0" />
 
 ## Part 3: Create DC-1 in Azure
 
@@ -63,9 +63,9 @@ I created a Windows Server virtual machine using the following configuration:
 | Region | Same region as the virtual network |
 | Virtual network | Active Directory lab network |
 
-> For security, passwords and other sensitive credentials should never be added to a public GitHub repository.
 
-![DC-1 Virtual Machine](https://github.com/user-attachments/assets/ADD-YOUR-IMAGE-LINK-HERE)
+![DC-1 Virtual Machine] <img width="3024" height="1812" alt="image" src="https://github.com/user-attachments/assets/fc8df630-5beb-456f-a555-f7e22557776e" />
+
 
 ## Part 4: Configure a Static Private IP Address for DC-1
 
@@ -78,7 +78,7 @@ DC-1 requires a consistent private IP address because Client-1 will use that add
 5. Changed the private IP assignment from **Dynamic** to **Static**.
 6. Saved the configuration.
 
-![DC-1 Static Private IP](https://github.com/user-attachments/assets/ADD-YOUR-IMAGE-LINK-HERE)
+![DC-1 Static Private IP] <img width="3024" height="1814" alt="image" src="https://github.com/user-attachments/assets/fa445ce7-dcd2-4d27-ba68-f56e24cd4076" />
 
 ## Part 5: Connect to DC-1 and Configure the Firewall
 
