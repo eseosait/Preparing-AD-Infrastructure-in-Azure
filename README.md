@@ -148,7 +148,7 @@ ipconfig /all
 
 I reviewed the command output and confirmed that Client-1’s DNS server was set to DC-1’s private IP address.
 
-![IPConfig DNS Verification](https://github.com/user-attachments/assets/ADD-YOUR-IMAGE-LINK-HERE)
+![IPConfig DNS Verification] <img width="3024" height="1964" alt="image" src="https://github.com/user-attachments/assets/82708a76-e171-4825-8012-e0b39f591776" />
 
 ## Verification Summary
 
