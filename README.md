@@ -89,7 +89,6 @@ DC-1 requires a consistent private IP address because Client-1 will use that add
 
 > Disabling the firewall was performed only in this controlled lab environment. In a production environment, the firewall should remain enabled and only the required firewall rules should be configured.
 
-![Windows Firewall Configuration](https://github.com/user-attachments/assets/ADD-YOUR-IMAGE-LINK-HERE)
 
 ## Part 6: Create Client-1 in Azure
 
@@ -105,7 +104,8 @@ I created a Windows client virtual machine using the following configuration:
 
 Placing Client-1 and DC-1 on the same virtual network allowed them to communicate privately inside Azure.
 
-![Client-1 Virtual Machine](https://github.com/user-attachments/assets/ADD-YOUR-IMAGE-LINK-HERE)
+![Client-1 Virtual Machine] <img width="3024" height="1896" alt="image" src="https://github.com/user-attachments/assets/73c7a8c5-f827-4c21-b892-a9716d2d3182" />
+
 
 ## Part 7: Configure Client-1’s DNS Settings
 
@@ -121,7 +121,7 @@ I configured Client-1 to use DC-1 as its DNS server.
 
 This configuration prepares Client-1 to locate the Active Directory domain after Active Directory Domain Services is installed on DC-1.
 
-![Client-1 DNS Configuration](https://github.com/user-attachments/assets/ADD-YOUR-IMAGE-LINK-HERE)
+![Client-1 DNS Configuration] <img width="3024" height="1814" alt="image" src="https://github.com/user-attachments/assets/3ac14506-e282-437c-aaca-9371654587bf" />
 
 ## Part 8: Test Network Connectivity
 
