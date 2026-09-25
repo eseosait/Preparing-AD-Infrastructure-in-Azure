@@ -32,7 +32,7 @@ This infrastructure prepares the environment for installing Active Directory Dom
 
 ## 🎥 Video Demonstrations
 
-### 1. Preparing Active Directory Infrastructure in Azure
+### Preparing Active Directory Infrastructure in Azure
 [Watch the video demonstration](https://youtu.be/woZ2d9iJwoA?si=NDy3Zd2_iMUCr3xu)
 
 ## Part 1: Create the Azure Resource Group
