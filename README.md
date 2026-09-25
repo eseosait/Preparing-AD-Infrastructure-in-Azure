@@ -30,6 +30,11 @@ This infrastructure prepares the environment for installing Active Directory Dom
 | DC-1 | Windows Server 2022 | Future Domain Controller | Static private IP address |
 | Client-1 | Windows 10 | Future Domain Client | DNS configured to use DC-1’s private IP address |
 
+## 🎥 Video Demonstrations
+
+### 1. Preparing Active Directory Infrastructure in Azure
+[Watch the video demonstration](https://youtu.be/woZ2d9iJwoA?si=NDy3Zd2_iMUCr3xu)
+
 ## Part 1: Create the Azure Resource Group
 
 1. Signed in to the Microsoft Azure portal.
