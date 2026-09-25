@@ -28,7 +28,7 @@ This infrastructure prepares the environment for installing Active Directory Dom
 | Virtual Machine | Operating System | Purpose | Network Configuration |
 |---|---|---|---|
 | DC-1 | Windows Server 2022 | Future Domain Controller | Static private IP address |
-| Client-1 | Windows 11 pro | Future Domain Client | DNS configured to use DC-1’s private IP address |
+| Client-1 | Windows 10 | Future Domain Client | DNS configured to use DC-1’s private IP address |
 
 ## 🎥 Video Demonstrations
 
